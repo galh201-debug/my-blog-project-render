@@ -1,0 +1,171 @@
+/* עיצוב כללי של הדף */
+body {
+  background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRHVURw4JDwuejv_omhJ4ltdzGmt5ugpWUQGg&s);
+  text-align: center;
+  margin-top: 30px;
+
+  /* שדרוג רקע */
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+/* שכבת כהות על הרקע כדי שהתוכן יבלוט */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.25);
+  z-index: -1;
+}
+
+/* כותרת ראשית */
+h1 {
+  color: white;
+  text-align: center;
+  font-size: 40px;
+  margin-top: 30px;
+}
+
+/* תמונה */
+img {
+  border: 4px solid black;
+  padding: 12px;
+  margin: 40px auto;
+  display: block;
+}
+
+/* פסקה כללית */
+p {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 20px;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: aliceblue;
+  border-radius: 10px;
+
+  /* שיפור נראות */
+  padding: 10px 16px;
+  display: inline-block;
+}
+
+/* קונטיינר של הכרטיסים */
+.cards {
+  display: flex;            /* מפעיל Flexbox */
+  justify-content: center;  /* מרכז את הכרטיסים אופקית */
+  gap: 30px;                /* רווח בין כרטיס לכרטיס */
+  flex-wrap: wrap;          /* ירידה לשורה במסך קטן */
+  padding: 30px 25px;
+}
+
+/* עיצוב כרטיס */
+.card {
+  width: 320px;                 /* רוחב קבוע */
+  min-height: 380px;            /* גובה מינימלי */
+  background: #163a55;          /* צבע רקע של הכרטיס */
+  border: 3px solid #5fe0ff;    /* מסגרת */
+  border-radius: 12px;          /* פינות מעוגלות */
+  padding: 25px;                /* רווח פנימי */
+
+  display: flex;                /* Flex בתוך הכרטיס */
+  flex-direction: column;       /* סידור מלמעלה למטה */
+  text-align: center;           /* מרכז טקסט */
+
+  /* שדרוג מקצועי */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* אפקט מעבר עכבר לכרטיס */
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
+}
+
+/* כותרת בתוך כרטיס */
+.card h2 {
+  color: #5fe0ff;         /* צבע כותרת */
+  font-size: 32px;        /* גודל */
+  margin-bottom: 15px;    /* רווח מתחת */
+}
+
+/* טקסט בתוך כרטיס */
+.card p {
+  color: #bfefff;         /* צבע טקסט רך */
+  font-size: 16px;        /* גודל טקסט */
+  line-height: 1.6;       /* ריווח בין שורות */
+  margin-bottom: 20px;    /* רווח מתחת */
+
+  /* שלא יירש את הרקע של p הכללי */
+  background-color: transparent;
+  padding: 0;
+  display: block;
+}
+
+/* כפתור */
+.card button {
+  margin-top: auto;       /* דוחף את הכפתור לתחתית הכרטיס */
+  padding: 14px;          /* רווח פנימי */
+  border: none;           /* בלי מסגרת */
+  border-radius: 8px;     /* פינות מעוגלות */
+  background: #63d8ff;    /* צבע כפתור */
+  font-size: 16px;        /* גודל טקסט */
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  cursor: pointer;        /* סמן יד */
+}
+
+/* אפקט מעבר עכבר לכפתור */
+.card button:hover {
+  opacity: 0.9;           /* שקיפות קלה */
+
+}
+/* =========================
+   MEDIA QUERIES – מובייל
+   ========================= */
+
+@media (max-width: 768px) {
+
+  /* כל הדף – פחות רווחים */
+  body {
+    margin-top: 10px;
+  }
+
+  /* כותרת ראשית */
+  h1 {
+    font-size: 28px; /* כותרת קטנה יותר */
+  }
+
+  /* תמונה ראשית */
+  img {
+    width: 90%;      /* לא תצא מהמסך */
+    max-width: 320px;
+  }
+
+  /* קונטיינר הכרטיסים */
+  .cards {
+    flex-direction: column; /* כרטיסים אחד מתחת לשני */
+    align-items: center;
+  }
+
+  /* כרטיס */
+  .card {
+    width: 90%;        /* כמעט כל רוחב המסך */
+    min-height: auto; /* בלי גובה מיותר */
+  }
+
+  /* כותרת בתוך כרטיס */
+  .card h2 {
+    font-size: 24px;
+  }
+
+  /* טקסט בתוך כרטיס */
+  .card p {
+    font-size: 15px;
+  }
+
+  /* כפתור */
+  .card button {
+    font-size: 15px;
+    padding: 12px;
+  }
+}
